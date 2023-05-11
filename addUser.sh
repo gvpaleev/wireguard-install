@@ -47,6 +47,7 @@ echo -e "\n### Client ${ID}
 [Peer]
 PublicKey = ${CLIENT_PUB_KEY}
 PresharedKey = ${CLIENT_PRE_SHARED_KEY}
-AllowedIPs = ${CLIENT_WG_IPV4}/32" >>"/etc/wireguard/${SERVER_CONF}.conf"
+AllowedIPs = ${CLIENT_WG_IPV4}/32
+### End" >>"/etc/wireguard/${SERVER_CONF}.conf"
 
 wg syncconf "${SERVER_CONF}" <(wg-quick strip "${SERVER_CONF}")
