@@ -14,6 +14,7 @@ CLIENT_DNS_1="1.1.1.1"
 CLIENT_DNS_2="1.0.0.1"
 ENDPOINT=$(ifconfig eth0 | grep -m 1 inet | cut -b 14-26)
 ALLOWED_IPS="0.0.0.0/0,::/0"
+SERVER_PORT="51820"
 
 for ((i = 1; i < 255; i++))
 {
@@ -40,8 +41,8 @@ DNS = ${CLIENT_DNS_1},${CLIENT_DNS_2}
 [Peer]
 PublicKey = ${SERVER_PUB_KEY}
 PresharedKey = ${CLIENT_PRE_SHARED_KEY}
-Endpoint = ${ENDPOINT}
-# AllowedIPs = ${ALLOWED_IPS}" >"${HOME_DIR}${CLIENT_CONF}.conf"
+Endpoint = ${ENDPOINT}:${SERVER_PORT}
+AllowedIPs = ${ALLOWED_IPS}" >"${HOME_DIR}${CLIENT_CONF}.conf"
 
 echo -e "\n### Client ${ID}
 [Peer]
