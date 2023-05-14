@@ -12,7 +12,7 @@ CLIENT_PRE_SHARED_KEY=$(wg genpsk)
 CLIENT_WG_IPV4="10.66.66."
 CLIENT_DNS_1="1.1.1.1"
 CLIENT_DNS_2="1.0.0.1"
-ENDPOINT=$(curl ifconfig.me)
+ENDPOINT=$(ifconfig eth0 | grep -m 1 inet | cut -b 14-26)
 ALLOWED_IPS="0.0.0.0/0,::/0"
 
 for ((i = 1; i < 255; i++))
